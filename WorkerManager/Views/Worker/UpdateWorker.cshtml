@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">EmploymentDate</label>
-                        <input type="date" class="form-control" name="employmentDate" value="@ViewBag.employmentDate" aria-describedby="employmentDate" placeholder="employmentDate">
+                        <input type="date" class="form-control" name="date" value="@ViewBag.date" aria-describedby="employmentDate" placeholder="employmentDate">
                     </div>
                     <div class="form-group">
                         <label for="exampleSelect1">Position</label>
@@ -46,8 +46,13 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Сompany</label>
-                        <input type="text" class="form-control" name="company" value="@ViewBag.company" aria-describedby="company" placeholder="company">
+                        <label for="exampleSelect1">Company</label>
+                        <select class="form-control" name="company">
+                            @foreach (var item in ViewBag.SelectValue)
+                            {
+                                <option>@item</option>
+                            }
+                        </select>
                     </div>
                     <div class="row justify-content-md-center">
                         <div>

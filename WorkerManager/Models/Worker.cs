@@ -22,5 +22,7 @@ namespace WorkerManager.Models
 
         public string company { get; set; }
 
+        public string date { get; set; }   
+
     }
 }

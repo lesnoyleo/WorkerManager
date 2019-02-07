@@ -38,9 +38,13 @@
                                 <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.middleName</p></a></td>
                                 <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.firstName</p></a></td>
                                 <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.lastName</p></a></td>
-                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.employmentDate</p></a></td>
+                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.date</p></a></td>
                                 <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.position</p></a></td>
-                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.company</p></a></td>
+                                <td>
+                                <a href="/Worker/UpdateWorker/@worker.id">
+                                    <p>@worker.company</p>
+                                </a>
+                                </td>
                             </tr>
                         
                     }
@@ -51,6 +55,9 @@
             <div class="col">
                 <a href="/Worker/AddWorker/"><button type="button" class="btn btn-success">Добавить</button></a>
             </div>
+        </div>
+        <div>
+            <a href="/Worker/GoMenu/">На главную</a>
         </div>
     </div>
 </body>

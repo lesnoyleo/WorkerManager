@@ -43,12 +43,15 @@ namespace WorkerManager.Controllers
                             firstName = reader.GetString(2),
                             lastName = reader.GetString(3),
                             employmentDate = reader.GetDateTime(4),
+                            date= reader.GetDateTime(4).ToString("yyyy-MM-dd"),
                             position = reader.GetString(5),
                             company = reader.GetString(6)
                         });
                     }
                     reader.Close();
                 }
+
+
                 ViewBag.Workers = workers;
                 return View();
             }
@@ -57,6 +60,24 @@ namespace WorkerManager.Controllers
         [HttpGet]
         public ActionResult AddWorker()
         {
+            List<string> name = new List<string>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sqlExpression = "SELECT name FROM Company";
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                var reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        name.Add(reader.GetString(0));
+                    }
+                    reader.Close();
+                }
+                ViewBag.SelectValue = name;
+            }
             return View();
         }
 
@@ -93,20 +114,43 @@ namespace WorkerManager.Controllers
                         ViewBag.firstName = reader.GetString(2);
                         ViewBag.lastName = reader.GetString(3);
                         ViewBag.employmentDate = reader.GetDateTime(4);
+                        ViewBag.date = reader.GetDateTime(4).ToString("yyyy-MM-dd");
                         ViewBag.position = reader.GetString(5);
                         ViewBag.company = reader.GetString(6);
                     }
                     reader.Close();
                 }
-                return View();
+
             }
+
+            List<string> name = new List<string>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sqlExpression = "SELECT name FROM Company";
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                var reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        name.Add(reader.GetString(0));
+                    }
+                    reader.Close();
+                }
+                ViewBag.SelectValue = name;
+            }
+            return View();
         }
 
         [HttpPost]
         public RedirectResult UpdateWorker(Worker worker)
         {
+            var temp = worker.employmentDate;
+            var temp2 = DateTime.Parse(worker.date);
             string sqlExpression = "UPDATE Worker SET middleName='"+worker.middleName+ "' , firstName='" + worker.firstName + "' ," +
-                " lastName='" + worker.lastName + "' , employmentDate='" + worker.employmentDate + "' ," +
+                " lastName='" + worker.lastName + "' , employmentDate='" + DateTime.Parse(worker.date) + "' ," +
                 "position='" + worker.position + "' , company='" + worker.company + "' where id='" + worker.id + "'";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -136,6 +180,12 @@ namespace WorkerManager.Controllers
         public RedirectResult Cancel()
         {
             return Redirect("/Worker/Index");
+        }
+
+        [HttpGet]
+        public RedirectResult GoMenu()
+        {
+            return Redirect("/");
         }
 
 
