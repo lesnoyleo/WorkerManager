@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Worker Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <h2>Update Worker</h2>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 col-md-offset-10">
+                <form method="post" action="">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">MiddleName</label>
+                        <input type="text" class="form-control" name="middleName" value="@ViewBag.middleName" aria-describedby="middleName" placeholder="middleName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">FirstName</label>
+                        <input type="text" class="form-control" name="firstName" value="@ViewBag.firstName" aria-describedby="firstName" placeholder="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">LastName</label>
+                        <input type="text" class="form-control" name="lastName" value="@ViewBag.lastName" aria-describedby="lastName" placeholder="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">EmploymentDate</label>
+                        <input type="date" class="form-control" name="employmentDate" value="@ViewBag.employmentDate" aria-describedby="employmentDate" placeholder="employmentDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleSelect1">Position</label>
+                        <select class="form-control" name="position" value="@ViewBag.position">
+                            <option>Разработчик</option>
+                            <option>Тестировщик</option>
+                            <option>Бизнес-Аналитик</option>
+                            <option>Менеджер</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Сompany</label>
+                        <input type="text" class="form-control" name="company" value="@ViewBag.company" aria-describedby="company" placeholder="company">
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <div>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+
+                        <div>
+                            <a href="/Worker/DeleteWorker/@ViewBag.id"><button type="button" class="btn btn-danger">Удалить</button></a>
+                        </div>
+                        <div>
+                            <a href="/Worker/Cancel/"><button type="button" class="btn btn-danger">Отмена</button></a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+
+        </div>
+</body>
+</html>

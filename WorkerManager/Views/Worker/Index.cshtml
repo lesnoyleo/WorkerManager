@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Worker Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Worker List</h1>
+            </div>
+        </div>
+        <div class="row">
+            <h5>@ViewBag.someInfo</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>middleName</th>
+                        <th>firstName</th>
+                        <th>lastName</th>
+                        <th>employmentDate</th>
+                        <th>position</th>
+                        <th>company</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var worker in ViewBag.Workers)
+                    {
+                        
+                            <tr>
+                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.middleName</p></a></td>
+                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.firstName</p></a></td>
+                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.lastName</p></a></td>
+                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.employmentDate</p></a></td>
+                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.position</p></a></td>
+                                <td><a href="/Worker/UpdateWorker/@worker.id"><p>@worker.company</p></a></td>
+                            </tr>
+                        
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <a href="/Worker/AddWorker/"><button type="button" class="btn btn-success">Добавить</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
